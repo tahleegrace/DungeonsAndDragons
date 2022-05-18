@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import App from './App';
+import Home from './pages/home/home';
+import SpellsList from './pages/spells/spells-list/spells-list';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(
@@ -10,7 +12,12 @@ const root = ReactDOM.createRoot(
 root.render(
     <React.StrictMode>
         <BrowserRouter>
-            <App />
+            <Routes>
+                <Route path="/" element={<App />}>
+                    <Route path="" element={<Home />} />
+                    <Route path="spells" element={<SpellsList /> } />
+                </Route>
+            </Routes>
         </BrowserRouter>
     </React.StrictMode>
 );

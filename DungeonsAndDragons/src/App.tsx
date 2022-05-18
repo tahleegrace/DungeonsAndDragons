@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link, Outlet } from 'react-router-dom';
 
 function App() {
   return (
@@ -16,14 +17,14 @@ function App() {
                               <a className="nav-link" href="#">Home</a>
                           </li>
                           <li className="nav-item">
-                              <a className="nav-link" href="#">Spells</a>
+                              <Link to="/spells" className="nav-link">Spells</Link>
                           </li>
                       </ul>
                   </div>
               </nav>
           </header>
           <div className="container m-0">
-              Placeholder for page content.
+              <Outlet />
           </div>
       </div>
   );
