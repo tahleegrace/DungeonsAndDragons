@@ -1,15 +1,17 @@
 import { Component, Fragment } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { addFavourite, removeFavourite } from "../../../actions/favourites";
 import { ContextProps, DungeonsAndDragonsContext } from "../../../context/context";
 import { Spell } from "../../../interfaces/spell";
 
 export class SpellsList extends Component<SpellsListProps, SpellsListState> {
     static contextType = DungeonsAndDragonsContext;
+    
+    constructor(props) {
+        super(props);
 
-    constructor() {
-        super({});
-
-        this.state = { spells: [] };
+        this.state = { spells: [], favourites: [] };
     }
 
     async componentDidMount() {
@@ -37,7 +39,7 @@ export class SpellsList extends Component<SpellsListProps, SpellsListState> {
                             (
                                 <div className="row ml-0 mb-2" key={spell.index}>
                                     <div className="col-2 pl-0">
-                                        <button>Add To Favourites</button>
+                                        <button onClick={() => this.setFavourite(spell)}>Add To Favourites</button>
                                     </div>
                                     <div className="col-8">
                                         <Link to={`/spells/${spell.index}`}>
@@ -52,12 +54,32 @@ export class SpellsList extends Component<SpellsListProps, SpellsListState> {
             </main>
         );
     }
+
+    setFavourite(spell: Spell) {
+        
+    }
+}
+
+function mapStateToProps(state) {
+    const { favourites } = state;
+
+    return { favourites: favourites };
+}
+
+// Redux forgot to get this working.
+function mapDispatchToProps(dispatch) {
+    return {
+        addFavourite: (spell) => dispatch(addFavourite(spell))
+    };
 }
 
 interface SpellsListState {
     spells: Spell[];
+    favourites: Spell[];
 }
 
-interface SpellsListProps {}
+interface SpellsListProps {
+    
+}
 
-export default SpellsList;
+export default connect(mapStateToProps, mapDispatchToProps)(SpellsList);
