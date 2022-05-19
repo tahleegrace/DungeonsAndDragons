@@ -1,4 +1,5 @@
 import { Component, Fragment } from "react";
+import { Link } from "react-router-dom";
 import { ContextProps, DungeonsAndDragonsContext } from "../../../context/context";
 import { Spell } from "../../../interfaces/spell";
 
@@ -39,7 +40,10 @@ export class SpellsList extends Component<SpellsListProps, SpellsListState> {
                                         <button>Add To Favourites</button>
                                     </div>
                                     <div className="col-8">
-                                        {spell.name}
+                                        <Link to={`/spells/${spell.index}`}
+                                            key={spell.index}>
+                                            { spell.name }
+                                        </Link>
                                     </div>
                                 </div>
                             ))};

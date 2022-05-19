@@ -4,7 +4,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import App from './App';
 import { defaultDependencies, DungeonsAndDragonsContext } from './context/context';
 import Home from './pages/home/home';
-import SpellsList from './pages/spells/spells-list/spells-list';
+import SpellDetails from './pages/spells/spell-details/spell-details';
+import { SpellsList } from './pages/spells/spells-list/spells-list';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(
@@ -17,7 +18,8 @@ root.render(
                 <Routes>
                     <Route path="/" element={<App />}>
                         <Route path="" element={<Home />} />
-                        <Route path="spells" element={<SpellsList /> } />
+                        <Route path="spells" element={<SpellsList />} />
+                        <Route path="spells/:index" element={<SpellDetails />} />
                     </Route>
                 </Routes>
             </BrowserRouter>
