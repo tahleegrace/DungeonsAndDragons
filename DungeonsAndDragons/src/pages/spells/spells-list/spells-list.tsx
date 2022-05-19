@@ -35,13 +35,12 @@ export class SpellsList extends Component<SpellsListProps, SpellsListState> {
                             </div>
                             {this.state.spells.map(spell =>
                             (
-                                <div className="row ml-0 mb-2">
+                                <div className="row ml-0 mb-2" key={spell.index}>
                                     <div className="col-2 pl-0">
                                         <button>Add To Favourites</button>
                                     </div>
                                     <div className="col-8">
-                                        <Link to={`/spells/${spell.index}`}
-                                            key={spell.index}>
+                                        <Link to={`/spells/${spell.index}`}>
                                             { spell.name }
                                         </Link>
                                     </div>

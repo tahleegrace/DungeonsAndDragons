@@ -7,6 +7,11 @@ class SpellsService {
         const result = await fetch(`${this._url}/spells`);
         return await result.json();
     }
+
+    async getSpell(index: string) {
+        const result = await fetch(`${this._url}/spells/${index}`);
+        return await result.json();
+    }
 }
 
 export default new SpellsService();
