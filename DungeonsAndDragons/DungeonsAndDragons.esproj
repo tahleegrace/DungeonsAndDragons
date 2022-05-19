@@ -11,6 +11,9 @@
     <Script Include="**" Exclude="*.esproj;**\node_modules\**" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="src\interfaces\" />
+    <Folder Include="src\context\" />
+    <Folder Include="src\services\" />
     <Folder Include="src\pages\home\" />
     <Folder Include="src\pages\spells\spells-list\" />
   </ItemGroup>
